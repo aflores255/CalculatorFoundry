@@ -91,6 +91,7 @@ contract CalculatorFoundry {
         uint256 firstNumber_,
         uint256 secondNumber_
     ) external returns (uint256 result_) {
+        require(secondNumber_ != 0, "Cannot divide by zero");
         result_ = firstNumber_ / secondNumber_;
         result = result_;
 

@@ -115,4 +115,73 @@ contract CalculatorTest is Test {
 
         calculatorFoundry.division(firstNumber_, secondNumber_);
     }
+
+    //Fuzzing tests
+
+    // Fuzzing division
+
+    function testFuzzingDiv(
+        uint256 firstNumber_,
+        uint256 secondNumber_
+    ) public {
+        calculatorFoundry.division(firstNumber_, secondNumber_);
+    }
+
+    // Fuzzing Addition
+
+    function testFuzzingAddition(
+        uint256 firstNumber_,
+        uint256 secondNumber_
+    ) public {
+        uint256 result_ = calculatorFoundry.addition(
+            firstNumber_,
+            secondNumber_
+        );
+        assert(result_ == firstNumber_ + secondNumber_);
+    }
+
+    // Fuzzing Substraction
+
+    function testFuzzingSubstraction(
+        uint256 firstNumber_,
+        uint256 secondNumber_
+    ) public {
+        uint256 result_ = calculatorFoundry.substraction(
+            firstNumber_,
+            secondNumber_
+        );
+        assert(result_ == firstNumber_ - secondNumber_);
+    }
+
+    // Fuzzing Multiplier
+
+    function testFuzzingMultiply(
+        uint256 firstNumber_,
+        uint256 secondNumber_
+    ) public {
+        vm.startPrank(admin);
+
+        uint256 result_ = calculatorFoundry.multiplier(
+            firstNumber_,
+            secondNumber_
+        );
+        assert(result_ == firstNumber_ * secondNumber_);
+
+        vm.stopPrank();
+    }
+
+    // Fuzzing Division not by Zero
+
+    function testFuzzingDivNotZero(
+        uint256 firstNumber_,
+        uint256 secondNumber_
+    ) public {
+        vm.assume(secondNumber_ != 0);
+        uint256 resultado_ = calculatorFoundry.division(
+            firstNumber_,
+            secondNumber_
+        );
+
+        assert(resultado_ == firstNumber_ / secondNumber_);
+    }
 }

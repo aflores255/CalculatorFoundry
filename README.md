@@ -58,6 +58,12 @@ The contract has been tested using Foundry. The **CalculatorTest.t.sol** file in
 | **`testCorrectMultiply`** | Verifies that the multiplication result is correct. |
 | **`testDivision`** | Tests the division function. |
 | **`testZeroDivision`** | Tests division by zero and expects a revert. |
+| **`testFuzzingDiv`** | Uses fuzzing to test division with random values. |
+| **`testFuzzingAddition`** | Uses fuzzing to test addition with random values. |
+| **`testFuzzingSubtraction`** | Uses fuzzing to test subtraction with random values. |
+| **`testFuzzingMultiply`** | Uses fuzzing to test multiplication with random values. |
+| **`testFuzzingDivision`** | Uses fuzzing to test division with random values, excluding zero. |
+
 
 ---
 

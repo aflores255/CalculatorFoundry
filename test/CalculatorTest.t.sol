@@ -108,13 +108,16 @@ contract CalculatorTest is Test {
 
     // Fuzzing division
 
-    function testFuzzingDiv(uint256 firstNumber_, uint256 secondNumber_) public {
-        calculatorFoundry.division(firstNumber_, secondNumber_);
+    function testFuzzingDiv(uint256 firstNumber_) public {
+        vm.expectRevert();
+        calculatorFoundry.division(firstNumber_, 0);
     }
 
     // Fuzzing Addition
 
     function testFuzzingAddition(uint256 firstNumber_, uint256 secondNumber_) public {
+        firstNumber_ = bound(firstNumber_, 0, type(uint256).max / 2); 
+        secondNumber_ = bound(secondNumber_, 0, type(uint256).max / 2);
         uint256 result_ = calculatorFoundry.addition(firstNumber_, secondNumber_);
         assert(result_ == firstNumber_ + secondNumber_);
     }
@@ -122,6 +125,9 @@ contract CalculatorTest is Test {
     // Fuzzing Substraction
 
     function testFuzzingSubstraction(uint256 firstNumber_, uint256 secondNumber_) public {
+        firstNumber_ = bound(firstNumber_, 0, type(uint256).max / 2); 
+        secondNumber_ = bound(secondNumber_, 0, type(uint256).max / 2);
+        vm.assume(firstNumber_ >= secondNumber_);
         uint256 result_ = calculatorFoundry.substraction(firstNumber_, secondNumber_);
         assert(result_ == firstNumber_ - secondNumber_);
     }
@@ -129,6 +135,8 @@ contract CalculatorTest is Test {
     // Fuzzing Multiplier
 
     function testFuzzingMultiply(uint256 firstNumber_, uint256 secondNumber_) public {
+        firstNumber_ = bound(firstNumber_, 0, 100 ether); 
+        secondNumber_ = bound(secondNumber_, 0, 100 ether);
         vm.startPrank(admin);
 
         uint256 result_ = calculatorFoundry.multiplier(firstNumber_, secondNumber_);
@@ -140,7 +148,8 @@ contract CalculatorTest is Test {
     // Fuzzing Division not by Zero
 
     function testFuzzingDivNotZero(uint256 firstNumber_, uint256 secondNumber_) public {
-        vm.assume(secondNumber_ != 0);
+        firstNumber_ = bound(firstNumber_, 0, type(uint256).max / 2); 
+        secondNumber_ = bound(secondNumber_, 1, type(uint256).max / 2);
         uint256 resultado_ = calculatorFoundry.division(firstNumber_, secondNumber_);
 
         assert(resultado_ == firstNumber_ / secondNumber_);

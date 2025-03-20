@@ -116,7 +116,7 @@ contract CalculatorTest is Test {
     // Fuzzing Addition
 
     function testFuzzingAddition(uint256 firstNumber_, uint256 secondNumber_) public {
-        firstNumber_ = bound(firstNumber_, 0, type(uint256).max / 2); 
+        firstNumber_ = bound(firstNumber_, 0, type(uint256).max / 2);
         secondNumber_ = bound(secondNumber_, 0, type(uint256).max / 2);
         uint256 result_ = calculatorFoundry.addition(firstNumber_, secondNumber_);
         assert(result_ == firstNumber_ + secondNumber_);
@@ -125,7 +125,7 @@ contract CalculatorTest is Test {
     // Fuzzing Substraction
 
     function testFuzzingSubstraction(uint256 firstNumber_, uint256 secondNumber_) public {
-        firstNumber_ = bound(firstNumber_, 0, type(uint256).max / 2); 
+        firstNumber_ = bound(firstNumber_, 0, type(uint256).max / 2);
         secondNumber_ = bound(secondNumber_, 0, type(uint256).max / 2);
         vm.assume(firstNumber_ >= secondNumber_);
         uint256 result_ = calculatorFoundry.substraction(firstNumber_, secondNumber_);
@@ -135,7 +135,7 @@ contract CalculatorTest is Test {
     // Fuzzing Multiplier
 
     function testFuzzingMultiply(uint256 firstNumber_, uint256 secondNumber_) public {
-        firstNumber_ = bound(firstNumber_, 0, 100 ether); 
+        firstNumber_ = bound(firstNumber_, 0, 100 ether);
         secondNumber_ = bound(secondNumber_, 0, 100 ether);
         vm.startPrank(admin);
 
@@ -148,7 +148,7 @@ contract CalculatorTest is Test {
     // Fuzzing Division not by Zero
 
     function testFuzzingDivNotZero(uint256 firstNumber_, uint256 secondNumber_) public {
-        firstNumber_ = bound(firstNumber_, 0, type(uint256).max / 2); 
+        firstNumber_ = bound(firstNumber_, 0, type(uint256).max / 2);
         secondNumber_ = bound(secondNumber_, 1, type(uint256).max / 2);
         uint256 resultado_ = calculatorFoundry.division(firstNumber_, secondNumber_);
 

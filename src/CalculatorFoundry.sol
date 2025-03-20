@@ -14,26 +14,10 @@ contract CalculatorFoundry {
 
     // Events
 
-    event Addition(
-        uint256 firstNumber_,
-        uint256 secondNumber_,
-        uint256 result_
-    );
-    event Substraction(
-        uint256 firstNumber_,
-        uint256 secondNumber_,
-        uint256 result_
-    );
-    event Multiplier(
-        uint256 firstNumber_,
-        uint256 secondNumber_,
-        uint256 result_
-    );
-    event Division(
-        uint256 firstNumber_,
-        uint256 secondNumber_,
-        uint256 result_
-    );
+    event Addition(uint256 firstNumber_, uint256 secondNumber_, uint256 result_);
+    event Substraction(uint256 firstNumber_, uint256 secondNumber_, uint256 result_);
+    event Multiplier(uint256 firstNumber_, uint256 secondNumber_, uint256 result_);
+    event Division(uint256 firstNumber_, uint256 secondNumber_, uint256 result_);
 
     // Modifier
 
@@ -52,10 +36,7 @@ contract CalculatorFoundry {
 
     // 1. Addition
 
-    function addition(
-        uint256 firstNumber_,
-        uint256 secondNumber_
-    ) external returns (uint256 result_) {
+    function addition(uint256 firstNumber_, uint256 secondNumber_) external returns (uint256 result_) {
         result_ = firstNumber_ + secondNumber_;
         result = result_;
 
@@ -63,10 +44,7 @@ contract CalculatorFoundry {
     }
 
     // 2. Substraction
-    function substraction(
-        uint256 firstNumber_,
-        uint256 secondNumber_
-    ) external returns (uint256 result_) {
+    function substraction(uint256 firstNumber_, uint256 secondNumber_) external returns (uint256 result_) {
         result_ = firstNumber_ - secondNumber_;
         result = result_;
 
@@ -75,10 +53,7 @@ contract CalculatorFoundry {
 
     // 3. Multiply
 
-    function multiplier(
-        uint256 firstNumber_,
-        uint256 secondNumber_
-    ) external onlyAdmin returns (uint256 result_) {
+    function multiplier(uint256 firstNumber_, uint256 secondNumber_) external onlyAdmin returns (uint256 result_) {
         result_ = firstNumber_ * secondNumber_;
         result = result_;
 
@@ -87,10 +62,7 @@ contract CalculatorFoundry {
 
     // 4. Division
 
-    function division(
-        uint256 firstNumber_,
-        uint256 secondNumber_
-    ) external returns (uint256 result_) {
+    function division(uint256 firstNumber_, uint256 secondNumber_) external returns (uint256 result_) {
         require(secondNumber_ != 0, "Cannot divide by zero");
         result_ = firstNumber_ / secondNumber_;
         result = result_;

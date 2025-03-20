@@ -34,10 +34,7 @@ contract CalculatorTest is Test {
         uint256 firstNumber_ = 8;
         uint256 secondNumber_ = 2;
 
-        uint256 resultado_ = calculatorFoundry.addition(
-            firstNumber_,
-            secondNumber_
-        );
+        uint256 resultado_ = calculatorFoundry.addition(firstNumber_, secondNumber_);
 
         assert(resultado_ == firstNumber_ + secondNumber_);
     }
@@ -47,10 +44,7 @@ contract CalculatorTest is Test {
         uint256 firstNumber_ = 4;
         uint256 secondNumber_ = 2;
 
-        uint256 resultado_ = calculatorFoundry.substraction(
-            firstNumber_,
-            secondNumber_
-        );
+        uint256 resultado_ = calculatorFoundry.substraction(firstNumber_, secondNumber_);
 
         assert(resultado_ == firstNumber_ - secondNumber_);
     }
@@ -83,10 +77,7 @@ contract CalculatorTest is Test {
         vm.startPrank(admin);
         uint256 firstNumber_ = 10;
         uint256 secondNumber_ = 2;
-        uint256 result_ = calculatorFoundry.multiplier(
-            firstNumber_,
-            secondNumber_
-        );
+        uint256 result_ = calculatorFoundry.multiplier(firstNumber_, secondNumber_);
         assert(result_ == firstNumber_ * secondNumber_);
 
         vm.stopPrank();
@@ -97,10 +88,7 @@ contract CalculatorTest is Test {
         uint256 firstNumber_ = 10;
         uint256 secondNumber_ = 2;
 
-        uint256 resultado_ = calculatorFoundry.division(
-            firstNumber_,
-            secondNumber_
-        );
+        uint256 resultado_ = calculatorFoundry.division(firstNumber_, secondNumber_);
 
         assert(resultado_ == firstNumber_ / secondNumber_);
     }
@@ -120,51 +108,30 @@ contract CalculatorTest is Test {
 
     // Fuzzing division
 
-    function testFuzzingDiv(
-        uint256 firstNumber_,
-        uint256 secondNumber_
-    ) public {
+    function testFuzzingDiv(uint256 firstNumber_, uint256 secondNumber_) public {
         calculatorFoundry.division(firstNumber_, secondNumber_);
     }
 
     // Fuzzing Addition
 
-    function testFuzzingAddition(
-        uint256 firstNumber_,
-        uint256 secondNumber_
-    ) public {
-        uint256 result_ = calculatorFoundry.addition(
-            firstNumber_,
-            secondNumber_
-        );
+    function testFuzzingAddition(uint256 firstNumber_, uint256 secondNumber_) public {
+        uint256 result_ = calculatorFoundry.addition(firstNumber_, secondNumber_);
         assert(result_ == firstNumber_ + secondNumber_);
     }
 
     // Fuzzing Substraction
 
-    function testFuzzingSubstraction(
-        uint256 firstNumber_,
-        uint256 secondNumber_
-    ) public {
-        uint256 result_ = calculatorFoundry.substraction(
-            firstNumber_,
-            secondNumber_
-        );
+    function testFuzzingSubstraction(uint256 firstNumber_, uint256 secondNumber_) public {
+        uint256 result_ = calculatorFoundry.substraction(firstNumber_, secondNumber_);
         assert(result_ == firstNumber_ - secondNumber_);
     }
 
     // Fuzzing Multiplier
 
-    function testFuzzingMultiply(
-        uint256 firstNumber_,
-        uint256 secondNumber_
-    ) public {
+    function testFuzzingMultiply(uint256 firstNumber_, uint256 secondNumber_) public {
         vm.startPrank(admin);
 
-        uint256 result_ = calculatorFoundry.multiplier(
-            firstNumber_,
-            secondNumber_
-        );
+        uint256 result_ = calculatorFoundry.multiplier(firstNumber_, secondNumber_);
         assert(result_ == firstNumber_ * secondNumber_);
 
         vm.stopPrank();
@@ -172,15 +139,9 @@ contract CalculatorTest is Test {
 
     // Fuzzing Division not by Zero
 
-    function testFuzzingDivNotZero(
-        uint256 firstNumber_,
-        uint256 secondNumber_
-    ) public {
+    function testFuzzingDivNotZero(uint256 firstNumber_, uint256 secondNumber_) public {
         vm.assume(secondNumber_ != 0);
-        uint256 resultado_ = calculatorFoundry.division(
-            firstNumber_,
-            secondNumber_
-        );
+        uint256 resultado_ = calculatorFoundry.division(firstNumber_, secondNumber_);
 
         assert(resultado_ == firstNumber_ / secondNumber_);
     }

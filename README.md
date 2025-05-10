@@ -22,7 +22,8 @@ This contract was developed and tested using **Foundry**, a powerful tool for te
 
 ### 🏗️ **Constructor**
 | **Constructor** | **Description** |
-| **`constructor(uint256 result_, address admin_)`** | Initializes the contract with a starting result and sets the admin address that will have permission to perform restricted operations like multiplication. |
+|------------------|----------------|
+| `constructor(uint256 result_, address admin_)` | Initializes the contract with a starting result and sets the admin address that will have permission to perform restricted operations like multiplication. |
 
 ### 🔑 **Modifiers**
 | **Modifier** | **Description** |

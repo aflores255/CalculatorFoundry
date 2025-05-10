@@ -1,7 +1,7 @@
 # 🧮 CalculatorFoundry Smart Contract
 
 ## 📌 **Description**
-The **CalculatorFoundry** is a smart contract written in Solidity that provides basic arithmetic functions: addition, subtraction, multiplication, and division. Additionally, it includes access control on multiplication, allowing only the admin to execute this operation.
+The **CalculatorFoundry** is a smart contract written in Solidity that provides basic on-chain arithmetic functions: addition, subtraction, multiplication, and division. Additionally, it includes access control on multiplication, allowing only the admin to execute this operation.
 
 This contract was developed and tested using **Foundry**, a powerful tool for testing smart contracts in Solidity.
 
@@ -19,6 +19,10 @@ This contract was developed and tested using **Foundry**, a powerful tool for te
 ---
 
 ## 📜 **Contract Details**
+
+### 🏗️ **Constructor**
+| **Constructor** | **Description** |
+| **`constructor(uint256 result_, address admin_)`** | Initializes the contract with a starting result and sets the admin address that will have permission to perform restricted operations like multiplication. |
 
 ### 🔑 **Modifiers**
 | **Modifier** | **Description** |
@@ -64,6 +68,12 @@ The contract has been tested using Foundry. The **CalculatorTest.t.sol** file in
 | **`testFuzzingMultiply`** | Uses fuzzing to test multiplication with random values. |
 | **`testFuzzingDivNotZero`** | Uses fuzzing to test division with random values, excluding zero. |
 
+### 📊 **Test Coverage**
+
+| File                      | % Lines       | % Statements  | % Branches   | % Funcs      |
+|---------------------------|---------------|----------------|---------------|---------------|
+| `src/CalculatorFoundry.sol` | 100.00% (22/22) | 100.00% (16/16) | 100.00% (4/4) | 100.00% (6/6) |
+| **Total**                 | **100.00% (22/22)** | **100.00% (16/16)** | **100.00% (4/4)** | **100.00% (6/6)** |
 
 ---
 
